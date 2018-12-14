@@ -2,12 +2,17 @@ package hello;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RegistrationData implements Serializable {
 	String login;
 	String password;
 	String desiredNick;
 	
-	public RegistrationData(String login, String password, String desiredNick) {
+	@JsonCreator
+	public RegistrationData(@JsonProperty("login") String login, @JsonProperty("password") String password,
+			@JsonProperty("nick") String desiredNick) {
 		super();
 		this.login = login;
 		this.password = password;

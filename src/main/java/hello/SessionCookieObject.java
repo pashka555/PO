@@ -1,26 +1,30 @@
 package hello;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SessionCookieObject {
-	String nickname;
-	String hashedSalts;
+	//String nickname;
+	final String hashedSalts;
 	
-	public SessionCookieObject(String nickname, String hashedSalts) {
+	@JsonCreator
+	public SessionCookieObject(@JsonProperty("hashedSalts") String hashedSalts) {
 		super();
-		this.nickname = nickname;
+		//this.nickname = nickname;
 		this.hashedSalts = hashedSalts;
 	}
 	
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+//	public String getNickname() {
+//		return nickname;
+//	}
+//	public void setNickname(String nickname) {
+//		this.nickname = nickname;
+//	}
 	public String getHashedSalts() {
 		return hashedSalts;
 	}
-	public void setHashedSalts(String hashedSalts) {
-		this.hashedSalts = hashedSalts;
-	}
-	
+//	public void setHashedSalts(String hashedSalts) {
+//		this.hashedSalts = hashedSalts;
+//	}
+//	
 }
