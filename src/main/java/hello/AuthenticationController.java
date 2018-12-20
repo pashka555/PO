@@ -78,10 +78,11 @@ public class AuthenticationController {
 			
 			if(hashedPass.equals(rs.getString(4))) {
 				PreparedStatement pickSessionStatement =
-						connection.prepareStatement("INSERT INTO sessions (nick, hash, last_used) VALUES (?,?,NOW())");
+						connection.prepareStatement("INSERT INTO sessions (nickname, hash, last_used) VALUES (?,?,NOW())");
 				sessionSalt = byteToString(generateSalt());
 				pickSessionStatement.setString(1, rs.getString(2));
 				pickSessionStatement.setString(2, sessionSalt);
+				pickSessionStatement.execute();
 			}
 
 			
