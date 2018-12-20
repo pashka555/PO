@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,13 +27,34 @@ public class AuthenticationController {
 	private static final int KEY_LENGTH = 256;	
 	
 	
-	public static byte[] getNextSalt() {
-	    byte[] salt = new byte[16];
-	    RANDOM.nextBytes(salt);
-	    return salt;
-	  }
+	public byte[] generateSalt() {
+        SecureRandom random = new SecureRandom();
+        byte bytes[] = new byte[20];
+        random.nextBytes(bytes);
+        return bytes;
+    }
+
+	public String byteToString(byte[] input) {
+        return Base64.encodeBase64String(input);
+    }
+
+	public byte[] getHashWithSalt(String input, byte[] salt) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        digest.reset();
+        digest.update(salt);
+        byte[] hashedBytes = digest.digest(stringToByte(input));
+        return hashedBytes;
+    }
 	
-	
+	public byte[] stringToByte(String input) {
+        if (Base64.isBase64(input)) {
+            return Base64.decodeBase64(input);
+
+        } else {
+            return Base64.encodeBase64(input.getBytes());
+        }
+    }
+
 	@RequestMapping(value="/auth", method = RequestMethod.POST)
 	public SessionCookieObject Authenticate(LoginCredentials loginData) {
 		String sessionSalt = "error";
@@ -48,17 +70,15 @@ public class AuthenticationController {
 			
 			String userSalt = rs.getString(3);
 			
-			String hashedPass = loginData.getPass() + userSalt;
-			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-			messageDigest.update(hashedPass.getBytes("UTF-8"));
-			hashedPass = new String(messageDigest.digest(), "UTF-8");
+			//String hashedPass = loginData.getPass() + userSalt;
+			
+			String hashedPass = byteToString(getHashWithSalt(loginData.getPass(),stringToByte(userSalt)));
 			
 			
-			
-			if(hashedPass == rs.getString(4)) {
+			if(hashedPass.equals(rs.getString(4))) {
 				PreparedStatement pickSessionStatement =
-						connection.prepareStatement("INSERT INTO sessions (nick, hash) VALUES (?,?,NOW())");
-				sessionSalt = new String(getNextSalt(),"UTF-8");
+						connection.prepareStatement("INSERT INTO sessions (nick, hash, last_used) VALUES (?,?,NOW())");
+				sessionSalt = byteToString(generateSalt());
 				pickSessionStatement.setString(1, rs.getString(2));
 				pickSessionStatement.setString(2, sessionSalt);
 			}
@@ -68,9 +88,6 @@ public class AuthenticationController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -93,25 +110,20 @@ public class AuthenticationController {
     		PreparedStatement statement = 
 					connection.prepareStatement("INSERT INTO users (desirednick,login,salt,password) VALUES (?,?,?,?)");
 			
-    		byte[] userSalt = getNextSalt();
+    		byte[] userSalt = generateSalt();
     		
     		//Database constraints handle uniquity of login and nickname
 			statement.setString(1, register.getDesiredNick());
 			statement.setString(2, register.getLogin());
 			
-			statement.setString(3, new String(userSalt, "UTF-8"));
+			statement.setString(3, byteToString(userSalt));
 			
-			
-			String hashedPass = register.getPassword() + new String(userSalt, "UTF-8");
-			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-			messageDigest.update(hashedPass.getBytes("UTF-8"));
-			hashedPass = new String(messageDigest.digest(), "UTF-8");
+			String hashedPass = byteToString(getHashWithSalt(register.getPassword(),userSalt));
+			 
 			statement.setString(4, hashedPass);
 			
-			statement.execute();			
-		} catch (UnsupportedEncodingException e) {
-			//System.out.println("PostgreSQL JDBC driver not found.");
-			e.printStackTrace();
+			statement.execute();
+			return (Authenticate(new LoginCredentials(register.getLogin(),register.getPassword())));
 		} catch (SQLException e) {
 			//System.out.println("Connection failure.");
 			e.printStackTrace();
@@ -119,7 +131,7 @@ public class AuthenticationController {
 			e.printStackTrace();
 		}
     	
-		return (Authenticate(new LoginCredentials(register.getLogin(),register.getPassword())));
+		return null;
 	}
 	
 }
