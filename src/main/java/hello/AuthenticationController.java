@@ -35,6 +35,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value="/auth", method = RequestMethod.POST)
 	public SessionCookieObject Authenticate(LoginCredentials loginData) {
+		String sessionSalt = "error";
 		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ChatServiceDB", "postgres", "12p23p34")) {
 			PreparedStatement statement = 
 					connection.prepareStatement("SELECT * FROM users WHERE login = ?");
@@ -52,11 +53,14 @@ public class AuthenticationController {
 			messageDigest.update(hashedPass.getBytes("UTF-8"));
 			hashedPass = new String(messageDigest.digest(), "UTF-8");
 			
+			
+			
 			if(hashedPass == rs.getString(4)) {
 				PreparedStatement pickSessionStatement =
 						connection.prepareStatement("INSERT INTO sessions (nick, hash) VALUES (?,?,NOW())");
+				sessionSalt = new String(getNextSalt(),"UTF-8");
 				pickSessionStatement.setString(1, rs.getString(2));
-				pickSessionStatement.setString(2, new String(getNextSalt(),"UTF-8"));
+				pickSessionStatement.setString(2, sessionSalt);
 			}
 
 			
@@ -72,7 +76,7 @@ public class AuthenticationController {
 		}
 		
 		
-		return null;
+		return (new SessionCookieObject(sessionSalt));
 		
 	}
 	
@@ -115,7 +119,7 @@ public class AuthenticationController {
 			e.printStackTrace();
 		}
     	
-		return null;
+		return (Authenticate(new LoginCredentials(register.getLogin(),register.getPassword())));
 	}
 	
 }
