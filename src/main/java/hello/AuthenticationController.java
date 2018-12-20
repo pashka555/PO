@@ -74,6 +74,7 @@ public class AuthenticationController {
 			
 			String hashedPass = byteToString(getHashWithSalt(loginData.getPass(),stringToByte(userSalt)));
 			
+			//TODO check if session is there, and is valid
 			
 			if(hashedPass.equals(rs.getString(4))) {
 				PreparedStatement pickSessionStatement =
