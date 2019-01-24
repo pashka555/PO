@@ -69,12 +69,10 @@ public class AuthenticationController {
 			rs.next();
 			
 			String userSalt = rs.getString(3);
-			
-			//String hashedPass = loginData.getPass() + userSalt;
-			
+						
 			String hashedPass = byteToString(getHashWithSalt(loginData.getPass(),stringToByte(userSalt)));
 			
-			//TODO check if session is there, and is valid
+			//TODO check if session is there, and if is valid
 			
 			if(hashedPass.equals(rs.getString(4))) {
 				PreparedStatement pickSessionStatement =
@@ -136,4 +134,4 @@ public class AuthenticationController {
 		return null;
 	}
 	
-}
+	}

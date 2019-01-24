@@ -31,24 +31,21 @@ public class MessageController {
 	}
 
     @RequestMapping(value="/send", method = RequestMethod.POST)
-    public void SendMessage(@RequestBody AuthAndMessage message) {
+    public String SendMessage(@RequestBody AuthAndMessage message) {
+    	System.out.println("Received an AuthAndMessage request");
+    	//System.out.println(message.getContent());
+    	//System.out.println(message.getUserAUTH().hashedSalts);
     	//boolean success = false;
     	try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ChatServiceDB", "postgres", "12p23p34")) {
 			//get nickname by token
     		
+    		//TODO check if token is valid
+    		
     		PreparedStatement query = 
 					connection.prepareStatement("SELECT nickname FROM sessions WHERE \"hash\" = ?");
     		
-    		    		
-    		//connection.createArrayOf("Character", CAC);
-    		
-			//query.setArray(1,connection.createArrayOf(, CAC));
-    		
     		query.setString(1, message.getUserAUTH().getHashedSalts());
-    		
-    		
-    		//NativeQuery query2 = Parser.parseJdbcSql(query.toString(), true, true, true, true, "").get(0);
-			
+    					
 			ResultSet rs = query.executeQuery();
 			
 			rs.next();
@@ -65,20 +62,19 @@ public class MessageController {
 			statement.setString(1, prepMessage.getNickname());
 			statement.setString(2, prepMessage.getContent());
 			statement.execute();
-			}			
-		} /*catch (ClassNotFoundException e) {
-			System.out.println("PostgreSQL JDBC driver not found.");
+			return("Success");
+			} else {
+				return("Session is not valid. Please log in again.");
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}*/ catch (SQLException e) {
-			//System.out.println("Connection failure.");
-			e.printStackTrace();
-		}
-    		//TODO authenticate session with one DB and send message to another DB. 
-    	
+			return("An error has occured while processing the message");
+		}    	
     }
     
     @RequestMapping("/load")
     public List<Message> LoadMessages() {
+    	System.out.println("Received a load request");
     	List<Message> result = new ArrayList<Message>();
     	//TODO limit to last 50 messages, change return type and return the query result
     	try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ChatServiceDB", "postgres", "12p23p34")) {
@@ -91,11 +87,8 @@ public class MessageController {
 			while(resultSet.next()) {
 				result.add(new Message(resultSet.getString(2),resultSet.getString(1)));			
 			}
-		} /*catch (ClassNotFoundException e) {
-			System.out.println("PostgreSQL JDBC driver not found.");
-			e.printStackTrace();
-		}*/ catch (SQLException e) {
-			System.out.println("Connection failure.");
+		} catch (SQLException e) {
+			//System.out.println("Connection failure.");
 			e.printStackTrace();
 		}
     	return result;
