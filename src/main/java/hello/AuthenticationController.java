@@ -76,7 +76,7 @@ public class AuthenticationController {
 			
 			if(hashedPass.equals(rs.getString(4))) {
 				PreparedStatement pickSessionStatement =
-						connection.prepareStatement("INSERT INTO sessions (nickname, hash, last_used) VALUES (?,?,NOW())");
+						connection.prepareStatement("INSERT INTO sessions (nickname, salt) VALUES (?,?)");
 				sessionSalt = byteToString(generateSalt());
 				pickSessionStatement.setString(1, rs.getString(2));
 				pickSessionStatement.setString(2, sessionSalt);
@@ -108,7 +108,7 @@ public class AuthenticationController {
 	public SessionCookieObject Register(RegistrationData register) {
 		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ChatServiceDB", "postgres", "12p23p34")) {
     		PreparedStatement statement = 
-					connection.prepareStatement("INSERT INTO users (desirednick,login,salt,password) VALUES (?,?,?,?)");
+					connection.prepareStatement("INSERT INTO users (desirednick,login,salt,hash) VALUES (?,?,?,?)");
 			
     		byte[] userSalt = generateSalt();
     		

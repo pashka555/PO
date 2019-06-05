@@ -42,7 +42,7 @@ public class MessageController {
     		//TODO check if token is valid
     		
     		PreparedStatement query = 
-					connection.prepareStatement("SELECT nickname FROM sessions WHERE \"hash\" = ?");
+					connection.prepareStatement("SELECT nickname FROM sessions WHERE \"salt\" = ?");
     		
     		query.setString(1, message.getUserAUTH().getHashedSalts());
     					
