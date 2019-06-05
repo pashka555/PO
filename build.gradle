@@ -29,6 +29,8 @@ targetCompatibility = 1.8
 dependencies {
     implementation 'org.postgresql:postgresql:42.2.5.jre7'
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.8'
+    //testCompile('org.apache.httpcomponents', name: 'httpclient', version: '4.5.8')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.jayway.jsonpath:json-path')
 }
