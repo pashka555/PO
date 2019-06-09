@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="index.css">
+<script type="text/javascript" src="index.js"></script>
+<!--- EXAMPLE TO LINK JS
+<script type="text/javascript" src="jquery-3.3.1.js"></script>
+--->
+</head>
+<body onload = "refreshMessageList()">
+  <div class ="login-container">Logged on as day</div>
+  <div class = "chat-container" id = "messagelist">
+   
+  </div>
+  <div class = "chat-input">
+    <input type = "text" class = "message-input" id = "message-input">
+    <!--- BUTTIN--> 
+    Encryption key: 
+    <input type = "text" class = "key-input" id = "key-input">
+    <button type = "button" id = "submitMessageBtn" onclick = "vigenerEncrypt()">SEND</button>
+  </div>
+</body>

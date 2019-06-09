@@ -1,0 +1,49 @@
+.chat-container {
+  	background: #feffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #feffff 0%, #ddf1f9 74%, #a0d8ef 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#a0d8ef',GradientType=0 );
+    border-style: solid;
+    border-radius:5px;
+    border-color: #a0d8ef;
+    border-width: 7px;
+}
+
+.chat-input {
+    border-style: solid;
+    border-radius:5px;
+    border-color: black;
+    border-width: 7px;
+}
+
+.message {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 3px;
+    background: whitesmoke   
+}
+
+.message-input {
+    background: #feffff; /* Old browsers */
+    color:black;
+    object-fit: cover;
+    background: -moz-linear-gradient(top, #feffff 0%, #ddf1f9 74%, #a0d8ef 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.key-input {
+    background: -moz-linear-gradient(top, #feffff 0%, #ddf1f9 74%, #a0d8ef 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 74%,#a0d8ef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color:green;
+}
+
+.login-container {
+  background : #a0d8ef;
+  color:white;
+  border-width:10px;
+  border-radius: 5px;
+}
