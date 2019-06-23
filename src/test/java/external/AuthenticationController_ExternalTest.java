@@ -23,33 +23,5 @@ import java.util.List;
 @RunWith(MockitoJUnitRunner.class)
 public class AuthenticationController_ExternalTest {
 
-    @Test
-    public void loadReturnsValidStatusCode() throws IOException {
 
-        HttpUriRequest request = new HttpGet( "http://localhost:8080/load" );
-
-        CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
-
-        Assert.assertEquals(HttpStatus.OK.value(), httpResponse.getStatusLine().getStatusCode());
-
-    }
-
-    @Test
-    public void requestingToLoadReturnsMessageWithContent() throws IOException, ParseException, NoSuchFieldException {
-
-        HttpUriRequest request = new HttpGet( "http://localhost:8080/load" );
-
-        CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
-
-        List<Message> messageList = new LinkedList<Message>();
-
-        JSONParser jsonParser = new JSONParser();
-
-        Object receiver = jsonParser.parse(httpResponse.getEntity().getContent());
-
-        for(int i = 0 ; i < ((JSONArray)receiver).size(); i++) {
-            assert (((JSONObject) ((JSONArray) receiver).get(i)).get("nickname") != null);
-            assert (((JSONObject) ((JSONArray) receiver).get(i)).get("content") != null);
-        }
-    }
 }
