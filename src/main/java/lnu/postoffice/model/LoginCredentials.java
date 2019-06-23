@@ -1,11 +1,11 @@
-package hello;
+package lnu.postoffice.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LoginCredentials {
-	String login;
-	String pass;
+	public String login;
+	public String pass;
 	
 	@JsonCreator
 	public LoginCredentials(@JsonProperty("login") String login, @JsonProperty("pass") String pass) {

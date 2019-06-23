@@ -1,6 +1,5 @@
-package hello;
+package lnu.postoffice.controller;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,17 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
-import org.postgresql.core.NativeQuery;
-import org.postgresql.core.Parser;
+import lnu.postoffice.model.Message;
+import lnu.postoffice.model.SessionCookieObject;
+import lnu.postoffice.model.AuthAndMessage;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -88,7 +84,6 @@ public class MessageController {
 				result.add(new Message(resultSet.getString(2),resultSet.getString(1)));			
 			}
 		} catch (SQLException e) {
-			//System.out.println("Connection failure.");
 			e.printStackTrace();
 		}
     	return result;

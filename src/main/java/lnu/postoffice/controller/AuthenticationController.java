@@ -1,6 +1,5 @@
-package hello;
+package lnu.postoffice.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -10,13 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 
+import lnu.postoffice.model.RegistrationData;
+import lnu.postoffice.model.SessionCookieObject;
+import lnu.postoffice.model.LoginCredentials;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
