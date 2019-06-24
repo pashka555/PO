@@ -1,0 +1,12 @@
+\babel@toc {ukrainian}{}
+\contentsline {section}{Revision history}{1}{section*.2}% 
+\contentsline {section}{\numberline {1}Business requirements}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Background}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Business oportunity}{1}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}Business Objectives and Success Criteria}{2}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.4}Business risks}{2}{subsection.1.4}% 
+\contentsline {section}{\numberline {2}Vision of the project}{2}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Vision statement}{2}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Main features}{2}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Assumptions and dependencies}{3}{subsection.2.3}% 
+\contentsline {section}{\numberline {3}Scope and limitations}{3}{section.3}% 

@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage[left=2.5cm, right=1.5cm, top=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage[utf8]{inputenc} 
+\usepackage[T2A]{fontenc}
+\usepackage{color, colortbl}
+\usepackage{tabularx}% http://ctan.org/pkg/tabularx
+\usepackage{graphicx} % Add pictures to your document
+\usepackage[english,ukrainian]{babel} % Українська мова за linux.org.ua
+\usepackage{float}
+\usepackage{listings}
+\usepackage[unicode]{hyperref}
+\usepackage{pgfplotstable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{Sweave}
+%\usepackage{pgfplots}
+%\usepackage{tikz}
+\usepackage{makecell}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[labelsep=period]{caption}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\DeclareUnicodeCharacter{0301}{\'{e}}
+%\renewcommand\bibname{Список використаних джерел}
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+\hypersetup{
+	colorlinks = true,
+	urlcolor = {blue}
+}
+
+
+\definecolor{light-gray}{gray}{0.95}
+
+\lstset{language = c}
+\lstset{backgroundcolor = \color{light-gray}}
+\lstset{xleftmargin = 1cm}
+\lstset{framexleftmargin = 1cm}
+\lstset{breaklines=true}
+\definecolor{Gray}{rgb}{0.9,0.9,0.9}
+
+\begin{document}
+	\pagenumbering{gobble}
+	\centering
+	\LARGE
+	Vision and scope \\
+	\large
+	of \\
+	\LARGE
+	\textquotedblleft Post Office\textquotedblright --- a forum chat-like message board 
+	\\
+	\large
+	\vfill
+	Version 1.0 approved \\
+	\vfill
+	Prepared by \\
+	Pavlo Protasenya
+	\newpage
+	\tableofcontents
+	\newpage
+	\section*{Revision history}
+	\addcontentsline{toc}{section}{Revision history}
+	\begin{tabular}{|l|l|l|}
+		\firsthline
+		ver. 1.0 & Initial draft & 23/06/2019\\
+		\hline
+	\end{tabular}
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\flushleft
+	\section{Business requirements}
+	\textbf{LNU Student Forums} are forums widely used by students across Ivan Franko L'viv National University. Forums are a great format for communication between students if the topic is complex enough. The goal of this project is to create an embeddable chat-like message board for simple questions and reactive communication between students. 
+	\subsection{Background}
+	\textbf{LNU Student Forums} were founded in 2016 by volunteering students across the university. They have been popular within the founding school, but more and more students drew in. The forums are sectioned on per-field basis and have private per-group sections as well.
+	\subsection{Business oportunity}
+	User bases of popular messenger platforms start to drop low. But as usual, students need a reactive messenger platform, be it a group in "Telegram" or "Messenger". Sometimes, groups stay on one platform just because that is the only line of communication they have. The goal of this project is to provide students with a good replacement embed in the forums, so each group of students has their own chat room, the only function of which is to keep the communication between groups of students, and that isn't dependant on social media platforms.
+	\subsection{Business Objectives and Success Criteria}
+	The primary objective is to draw in at least 75\% of students that use the forums to also use the messageboard/chat for reactive communication. Secondary objective is to draw in more students to use the \textbf{LNU Student Forums}, even if just for the chatroom of their group. The main metrics for the two will be: 
+	\begin{itemize}
+		\item Ratio of unique forum users and unique chatroom users over a month. 
+		\item \textbf{LNU Student Forums} statistics, that show the count of registered and active users. 
+	\end{itemize}
+	\subsection{Business risks}
+	\begin{tabularx}{1.075\textwidth}{|p{0.4\textwidth}|p{0.2\textwidth}|p{0.4\textwidth}|}
+		\firsthline
+		Issue & Probability & Impact \\ \hline
+		Very few students might find the chat platform convenient & ~40\% & That would show that implementing the project does not bring high returns. \\ \hline
+	\end{tabularx}
+	\section{Vision of the project}
+	\subsection{Vision statement}
+	\subsection{Main features}
+	\begin{itemize}
+		\item Register an account on the platform on per-group, per-room basis
+		\item Log into the platform
+		\item A logged-on student can leave a message on the board that everyone else on the same board can see.
+		\item Can load the messages from the board.
+	\end{itemize}
+	\subsection{Assumptions and dependencies}
+	Assumptions:
+	\begin{itemize}
+		\item Student is also registered on the \textbf{LNU Student Forums}
+		\item Most students using the platform would be located in Ukraine where servers are planned to be situated for low latency
+	\end{itemize}
+	Dependencies:
+	\begin{itemize}
+		\item For \textbf{LNU Student Forums} to filter who gets registered on a group or chatroom, they must provide their own registration form for chatroom.
+	\end{itemize}
+	\section{Scope and limitations}
+\end{document}
