@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.5.27)  24 JUN 2019 09:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.5.27)  24 JUN 2019 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1394,43 +1394,43 @@ Overfull \hbox (37.53476pt too wide) in paragraph at lines 92--93
 []  
  []
 
-[2] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+[2]
+Overfull \hbox (12.33322pt too wide) in paragraph at lines 130--137
+[]  
+ []
+
+[3] [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
  (./VOC_PO.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
+Package rerunfilecheck Info: File `VOC_PO.out' has not changed.
+(rerunfilecheck)             Checksum: 6D6EAAD1F3BB75BE5FD521DC6B7217FC;2202.
 
-
-Package rerunfilecheck Warning: File `VOC_PO.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `VOC_PO.out':
-(rerunfilecheck)             Before: 099CA4BF8092F5CA0777C76BD2F027CF;1565
-(rerunfilecheck)             After:  488D376DDC0A3072BB491337492D9A8D;1720.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  ) 
 Here is how much of TeX's memory you used:
- 34775 strings out of 493962
- 770454 string characters out of 6167418
- 1124331 words of memory out of 5000000
- 37899 multiletter control sequences out of 15000+600000
- 12622 words of font info for 28 fonts, out of 8000000 for 9000
+ 34806 strings out of 493962
+ 770811 string characters out of 6167418
+ 1128331 words of memory out of 5000000
+ 37917 multiletter control sequences out of 15000+600000
+ 18338 words of font info for 42 fonts, out of 8000000 for 9000
  475 hyphenation exceptions out of 8191
  69i,9n,98p,721b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1440.600
-pk> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1200.600p
-k> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1728.600pk
-> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1440.600pk>
- </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm2074.600pk>
-Output written on VOC_PO.pdf (5 pages, 47763 bytes).
+ </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1095.600pk
+> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1440.600p
+k> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1200.600pk
+> </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1728.600pk>
+ </home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm1440.600pk> 
+</home/pavlo/.texlive2018/texmf-var/fonts/pk/ljfour/lh/lh-t2a/larm2074.600pk>
+Output written on VOC_PO.pdf (6 pages, 64204 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -107,7 +107,31 @@
 	\end{itemize}
 	Dependencies:
 	\begin{itemize}
-		\item For \textbf{LNU Student Forums} to filter who gets registered on a group or chatroom, they must provide their own registration form for chatroom.
+		\item For \textbf{LNU Student Forums} to filter who gets registered on a group or chatroom, they must restrict access to the page containing the chatroom.
 	\end{itemize}
 	\section{Scope and limitations}
+	\begin{tabular}{|l|p{0.5\textwidth}|l|}
+		\firsthline
+		Feature & Release 1 & Release 2 \\ \hline
+		Register & Not implemented & Fully implemented \\ \hline
+		Login & Fully Implemented & Fully implemented \\ \hline
+		Send message & No security, was just sending a pair of nickname-message & Fully implemented \\ \hline
+		Load messages & Fully implemented & Fully implemented
+		\\ \hline
+	\end{tabular}
+	\subsection{Limitations and exclusions}
+	\begin{itemize}
+	\item There is no checking for whether a new registered user is a member of \textbf{LNU Student Forums}. 
+	\item The system only loads last 50 messages for user. It's not possible to load any further in the past, yet.
+	\end{itemize}
+	\section{Business Context}
+	\subsection{Stakeholder profiles}
+	\small
+	\begin{tabular}{|p{0.18\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|}
+		\firsthline
+		Stakeholder & Major value & Attitudes & Major interests & Constraints \\ \hline
+		Forum owners & Lower load on servers, no need to maintain daily topics. & Chat moderation on forum's side & Forum is much cleaner across all boards and has more daily users. & None identified \\ \hline
+		Students of LNU & Efficient way to communicate with groupmates & Contributions to release 1 & A certain way to communicate with the respective group, not bound to a social network & LNU Students Forum account required \\ \hline
+		University staff & More daily students on the forums, therefore advertising and announcements are much more effective & Provided servers to run LNU Students Forum, on which the project runs as well & Way to reactively communicate with students & None identified. \\ \hline
+	\end{tabular}
 \end{document}
