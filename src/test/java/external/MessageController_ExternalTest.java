@@ -1,5 +1,6 @@
 package external;
 
+import lnu.postoffice.Application;
 import lnu.postoffice.model.Message;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
@@ -13,19 +14,30 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.boot.SpringApplication;
 import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MessageController_ExternalTest {
+
+    @BeforeClass
+    public static void startServer() {
+        String[] args = {""};
+        Application.main(args);
+    }
+
     @Test
     public void loadReturnsValidStatusCode() throws IOException {
 
-        HttpUriRequest request = new HttpGet( "http://localhost:8080/load" );
+        HttpUriRequest request = new HttpGet( "http://localhost:8090/load" );
 
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
 
@@ -36,7 +48,7 @@ public class MessageController_ExternalTest {
     @Test
     public void requestingToLoadReturnsMessageWithContent() throws IOException, ParseException, NoSuchFieldException {
 
-        HttpUriRequest request = new HttpGet( "http://localhost:8080/load" );
+        HttpUriRequest request = new HttpGet( "http://localhost:8090/load" );
 
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
 
@@ -52,7 +64,7 @@ public class MessageController_ExternalTest {
 
     @Test
     public void sendWithInvalidTokenShouldFail() throws IOException {
-        HttpPost request = new HttpPost("http://localhost:8080/send");
+        HttpPost request = new HttpPost("http://localhost:8090/send");
 
         StringEntity params = new StringEntity("{\"content\":\"haha, did it\",\"userAUTH\":{\"hashedSalts\":\"123123123\"}}");
 
