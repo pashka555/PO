@@ -78,7 +78,17 @@ public class MessageController_ExternalTest {
     }
 
     @Test
-    public void sendWithValidTokenShouldSucceed() {
+    public void sendWithValidTokenShouldSucceed() throws IOException {
+        HttpPost request = new HttpPost("http://localhost:8090/send");
 
+        StringEntity params = new StringEntity("{\"content\":\"I did it fairly\",\"userAUTH\":{\"hashedSalts\":\"+KQ5anp9UbcaeIk9Y/4cRx5NjvU=\"}}");
+
+        request.setHeader("content-type", "application/json");
+
+        request.setEntity(params);
+
+        CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
+
+        assert(EntityUtils.toString(response.getEntity()).equals("Success"));
     }
 }
